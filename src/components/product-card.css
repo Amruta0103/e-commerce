@@ -1,0 +1,117 @@
+.ProductCard{
+  height: 325px;
+  width: 200px;
+  color: var(--black);
+  background-color: var(--white);
+  margin: 1rem;
+  border: 0.5px solid var(--black);
+  border-radius: 1rem;
+}
+.prod-info{
+  text-align: left;
+  padding: 0 0.3rem;
+}
+.prod-det{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  overflow: hidden;
+  max-width: 150px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+.card-button{
+  width: inherit;
+  padding: 0.3rem;
+  margin: 0.5rem 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  color: var(--white);
+  border: 1px solid var(--one-focus);
+  border-radius: 0 0 1rem 1rem;
+  background-color: var(--one-focus);
+}
+.card-button:hover{
+  transform: none;
+  cursor: pointer;
+}
+.card-button:active{
+  transform: scale(0.90);
+}
+.card-button-sel{
+  color: var(--one-focus);
+  border: 1px solid var(--grey-light);
+  background-color: var(--black);
+}
+.ProductCardCart{
+  height: 340px;
+  width: 200px;
+  color: var(--black);
+  background-color: var(--white);
+  margin: 1rem;
+  border: 1px solid var(--black);
+  border-radius: 1rem;
+}
+.totalPrice{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin: 1rem;
+  width: fit-content;
+}
+.reducerFunc{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+.reducer-btns{
+  height: 25px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+.remove-cart-button{
+  cursor: pointer;
+  padding: 0.3rem;
+  width: 100%;
+  margin: 0;
+  color: var(--three-black);
+  border: 1px solid var(--three-black);
+  border-radius: 0 0 1rem 1rem;
+  background-color: var(--white);  
+}
+.remove-cart-info{
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  width: fit-content;
+}
+.ProductCardWish{
+  height: 320px;
+  width: 200px;
+  color: var(--black);
+  background-color: var(--white);
+  margin: 1rem;
+  border: 1px solid var(--black);
+  border-radius: 1rem;
+}
+.img-wish{
+  display: inline-flex;
+  justify-content: center;
+}
+.wishlist-div{
+  position: relative;
+  right: 2rem;
+  top: 0rem;
+  z-index: 2;
+}
+.wishlist-btn{
+  z-index: 2;
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  background-color: white;
+}
+.wishlist-btn:hover{
+  cursor: pointer;
+}
