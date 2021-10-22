@@ -16,7 +16,6 @@ export const fakeAuthApi = (userName, passCode) => {
   return new Promise((resolve, reject) => {
     setTimeout(()=>{
       const user = findUserByUserName(userName, passCode);
-      // const pass = findUserByUserName(passCode)
       if(user.passCode !== passCode ) {
         reject({ success: false, status: 401 });
       }else{

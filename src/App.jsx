@@ -20,7 +20,7 @@ function App() {
         <Route path ="/wishlist" element={<Wishlist/>} />
         <PrivateRoute path="/cart" element={<Cart />} />
       </Routes>     
-    </div>
+    </div>       
   );
 }
 

@@ -4,11 +4,12 @@ import { useAuth } from "../components/authProvider";
 // import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { loginCreds } = useAuth();
+  const { loginCreds, setLogin } = useAuth();
   // const { state } = useLocation();
   // const navigate = useNavigate();
   const [ user, setUser ] = useState("");
   const [ pass, setPass ] = useState("");
+
   function loginHandler(){
     loginCreds(user, pass)
   }
@@ -21,9 +22,9 @@ export default function Login() {
         <legend>PASSWORD</legend>
         <input onChange={(pass)=> setPass(pass.target.value)} placeholder="Pass..."></input>
         <br /><br />
-        <button className="login-btn" onClick={loginHandler} >Log In</button>
+        <button className="login-btn" onClick={loginHandler}>Log In</button>
         <br />
-        {/* <button onClick={()=>setLogin(false)}>log out</button> */}
+        <button onClick={()=> setLogin(false)}>log out</button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { fakeAuthApi } from "../fake-auth";
 export const AuthContext = createContext();
 
@@ -22,6 +23,7 @@ export const AuthProvider = ({ children }) => {
           JSON.stringify({ isLoggedIn: true })
         );
         console.log("ho gaya");
+        <Navigate to="/cart"/>
       }
     } catch (error) {
       console.log("Sahi username password nahi pata kya?", error);
