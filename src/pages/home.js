@@ -7,8 +7,6 @@ export default function Home(){
       <div>
         {/* <img class="home-images"src="./shopping.png" alt="shopping"></img> */}
         <img class="home-images"src="./icons/e-Commerce.png" alt="shopping"></img>
-        <h1 className="home-infos">Your One Stop Shop for Your Crafts and Stationery needs!</h1>
-
         <Link className="menu-link" to="/products">
           <button className="home-cta-btn">
             <div className="cta-sub-div">
@@ -17,6 +15,7 @@ export default function Home(){
             </div>
           </button>
         </Link>
+        <h1 className="home-infos">Your One Stop Shop for Your Crafts and Stationery needs!</h1>
       </div>
     </div>
   );
