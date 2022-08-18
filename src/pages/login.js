@@ -11,7 +11,7 @@ export default function Login() {
   const [ pass, setPass ] = useState("");
 
   function loginHandler(){
-    loginCreds(user, pass)
+    loginCreds(user, pass)``
   }
   return (
     <div className="Login">
