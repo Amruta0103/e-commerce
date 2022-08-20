@@ -1,13 +1,13 @@
 import React from "react";
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import { PrivateRoute } from "./components/privateRoute.js";
-import Home from "./app/components/pages/home";
-import Cart from "./app/components/pages/cart.js";
-import Wishlist from "./app/components/pages/wishlist.js";
-import ProductListing from "./app/components/pages/product-listing.js";
-import Login from "./app/components/pages/login";
-import Navbar from "./components/navbar";
+import { PrivateRoute } from "../src/app/components/privateRoute";
+import Home from "../src/app/pages/home";
+import Cart from "../src/app/pages/cart";
+import Wishlist from "../src/app/pages/wishlist";
+import ProductListing from "../src/app/pages/product-listing";
+import Login from "../src/app/pages/login";
+import Navbar from "../src/app/components/navbar";
 
 function App() {
   return (

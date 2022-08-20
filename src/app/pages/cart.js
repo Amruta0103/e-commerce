@@ -2,7 +2,7 @@ import { useCart } from "../components/cart-context";
 import { Link } from "react-router-dom";
 // import { useReducer } from "react";
 import "../components/product-card.css";
-import "../App.css"
+import "./pages.css";
 
 export default function Cart({ item }) {
   const { cartItem, setCartItem, wishItem, setWishItem } = useCart();

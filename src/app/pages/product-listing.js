@@ -1,7 +1,7 @@
-import { data } from "../fakedata";
+import { data } from "./fakedata";
 import ProductDetail from "../components/product-card";
 import { useReducer } from "react";
-import '../App.css';
+import "./pages.css";
 
 export default function ProductList() {
   const [

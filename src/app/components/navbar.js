@@ -1,4 +1,4 @@
-import "../App.css";
+import "../pages/pages.css";
 import { Link } from 'react-router-dom';
 import { useCart } from "./cart-context";
 const Navbar = () => {

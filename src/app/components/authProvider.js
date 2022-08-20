@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { fakeAuthApi } from "../fake-auth";
+import { fakeAuthApi } from "./fake-auth";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {

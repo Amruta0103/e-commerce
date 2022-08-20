@@ -1,4 +1,4 @@
-import '../App.css';
+import "./pages.css";
 import React, { useState } from "react";
 import { useAuth } from "../components/authProvider";
 // import { useLocation, useNavigate } from "react-router-dom";

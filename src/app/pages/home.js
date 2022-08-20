@@ -1,4 +1,4 @@
-import "../App.css";
+import "./pages.css";
 import { Link } from "react-router-dom";
 
 export default function Home(){

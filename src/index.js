@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import App from './App.jsx';
-import { CartProvider } from "../src/components/cart-context";
-import { AuthProvider } from "../src/components/authProvider";
+import { CartProvider } from "../src/app/components/cart-context";
+import { AuthProvider } from "../src/app/components/authProvider";
 
 
 ReactDOM.render(
