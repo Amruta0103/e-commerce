@@ -18,7 +18,7 @@ function App() {
         <Route path="/products" element={<ProductListing/>} />
         <Route path="/login" element={<Login/>} />
         <Route path ="/wishlist" element={<Wishlist/>} />
-        <PrivateRoute path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
       </Routes>     
     </div>       
   );

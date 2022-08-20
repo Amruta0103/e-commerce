@@ -1,12 +1,11 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Routes,Navigate } from "react-router-dom";
 import { fakeAuthApi } from "./fake-auth";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [ isLoggedin, setLogin] = useState(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(()=>{
     const loginStatus = JSON.parse(localStorage?.getItem("login"));
 
@@ -17,6 +16,7 @@ export const AuthProvider = ({ children }) => {
   async function loginCreds(userName, passCode) {
     try {
       const response = await fakeAuthApi(userName, passCode);
+      console.log(response);
       if (response.success) {
         setLogin(true);
         localStorage?.setItem(
@@ -24,7 +24,8 @@ export const AuthProvider = ({ children }) => {
           JSON.stringify({ isLoggedIn: true })
         );
         console.log("ho gaya");
-        <Navigate to="/cart"/>
+        <Routes>
+        <Navigate to="/cart" replace={true}/></Routes>
       }
     } catch (error) {
       console.log("Sahi username password nahi pata kya?", error);
