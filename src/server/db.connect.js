@@ -1,12 +1,8 @@
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://AmrutaD03:Amu@las16#@amruta-d-cluster.jdnzp.mongodb.net/?retryWrites=true&w=majority"
-async function initializeDBConnection() {
+const uri = "mongodb+srv://AmrutaD03:Amu%40las16%23@amruta-d-cluster.jdnzp.mongodb.net/?retryWrites=true&w=majority"
+async function connectDB() {
     try {
-        const connection = await mongoose.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true
-        });
+        const connection = await mongoose.connect(uri);
         if (connection) {
             console.log("Succesfully connected to the database");
         }
@@ -15,4 +11,5 @@ async function initializeDBConnection() {
     }
 }
 
-module.exports = { initializeDBConnection };
+
+module.exports =  connectDB ;

@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [ isLoggedin, setLogin] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(()=>{
     const loginStatus = JSON.parse(localStorage?.getItem("login"));
 

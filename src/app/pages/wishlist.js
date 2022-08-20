@@ -1,4 +1,4 @@
-import { useCart } from "../../../components/cart-context";
+import { useCart } from "../components/cart-context";
 import "../components/product-card.css";
 import { Link } from "react-router-dom";
 

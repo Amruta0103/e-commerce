@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { useState } from "react";
-import { useAuth } from "../../../components/authProvider";
+import { useAuth } from "../components/authProvider";
 // import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {

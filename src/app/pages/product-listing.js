@@ -1,5 +1,5 @@
-import { data } from "../../../fakedata";
-import ProductDetail from "../../../components/product-card";
+import { data } from "../fakedata";
+import ProductDetail from "../components/product-card";
 import { useReducer } from "react";
 import '../App.css';
 

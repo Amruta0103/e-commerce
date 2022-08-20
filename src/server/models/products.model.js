@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 // var Float = require('mongoose-float').loadType(mongoose);
 const ProductSchema = new mongoose.Schema(
     {
-        _id: {
-            type: String,
-            unique: true
-        },
+        // _id: {
+        //     type: String,
+        //     unique: true
+        // },
         image:{
           type: Array,
         },

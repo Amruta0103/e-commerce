@@ -2,11 +2,11 @@ import React from "react";
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import { PrivateRoute } from "./components/privateRoute.js";
-import Home from "./pages/home";
-import Cart from "./pages/cart.js";
-import Wishlist from "./pages/wishlist.js";
-import ProductListing from "./pages/product-listing.js";
-import Login from "./pages/login";
+import Home from "./app/components/pages/home";
+import Cart from "./app/components/pages/cart.js";
+import Wishlist from "./app/components/pages/wishlist.js";
+import ProductListing from "./app/components/pages/product-listing.js";
+import Login from "./app/components/pages/login";
 import Navbar from "./components/navbar";
 
 function App() {

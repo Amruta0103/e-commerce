@@ -1,6 +1,6 @@
 const express = require('express');
 const productRoute = express.Router();
-const { Product } = require('../model/products.model');
+const { Product } = require("../models/products.model");
 
 productRoute.route("/")
   .get(async(req,res)=>{
@@ -14,3 +14,5 @@ productRoute.route("/")
       res.status(500).json({ success: false, error: error.message });
     }
   })
+
+module.exports = productRoute
