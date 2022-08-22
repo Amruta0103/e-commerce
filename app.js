@@ -14,9 +14,9 @@ app.use(express.json())
 
 app.use("/products",productRoute)
 
-// app.get("/", (req, res) => {
-//   res.send("Welcome");
-// });
+app.get("/", (req, res) => {
+  res.send("Welcome");
+});
 app.listen(8080, () => {
   console.log("Server Started");
 })

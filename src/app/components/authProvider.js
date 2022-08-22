@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { Routes,Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Cart from "../pages/cart";
 import { fakeAuthApi } from "./fake-auth";
 export const AuthContext = createContext();
 
@@ -11,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
     loginStatus?.isLoggedin && setLogin(true);
     console.log("hello",loginStatus,isLoggedin);
-  },)
+  },[isLoggedin])
 
   async function loginCreds(userName, passCode) {
     try {
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         );
         console.log("ho gaya");
         <Routes>
-        <Navigate to="/cart" replace={true}/></Routes>
+        <Route path="/cart" element={<Cart/>}/></Routes>
       }
     } catch (error) {
       console.log("Sahi username password nahi pata kya?", error);

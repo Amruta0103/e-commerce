@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import { PrivateRoute } from "../src/app/components/privateRoute";
+// import { PrivateRoute } from "../src/app/components/privateRoute";
 import Home from "../src/app/pages/home";
 import Cart from "../src/app/pages/cart";
 import Wishlist from "../src/app/pages/wishlist";
@@ -18,7 +18,7 @@ function App() {
         <Route path="/products" element={<ProductListing/>} />
         <Route path="/login" element={<Login/>} />
         <Route path ="/wishlist" element={<Wishlist/>} />
-        <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>     
     </div>       
   );
