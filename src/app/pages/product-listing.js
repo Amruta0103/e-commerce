@@ -3,6 +3,7 @@ import ProductDetail from "../components/product-card";
 import { useReducer } from "react";
 import "./pages.css";
 
+console.log(data);
 export default function ProductList() {
   const [
     { showInventoryAll, showFastDeliveryOnly, sortBy },
@@ -55,7 +56,7 @@ export default function ProductList() {
       .filter(({ fastDelivery }) =>
         showFastDeliveryOnly ? fastDelivery : true
       )
-      .filter(({ inStock }) => (showInventoryAll ? !inStock : inStock));
+      .filter(({ inStock }) => (showInventoryAll ? inStock : !inStock));
   }
 
   const sortedData = getSortedData(data, sortBy);
