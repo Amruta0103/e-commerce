@@ -56,7 +56,7 @@ export default function ProductList() {
       .filter(({ fastDelivery }) =>
         showFastDeliveryOnly ? fastDelivery : true
       )
-      .filter(({ inStock }) => (showInventoryAll ? inStock : !inStock));
+      .filter(({ inStock }) => (showInventoryAll ? data : inStock));
   }
 
   const sortedData = getSortedData(data, sortBy);
