@@ -15,17 +15,17 @@ productRoute.route("/")
   //   }
   // })
 
-  .post(async(req,res)=>{
-    try{
-      const addData = await Product.add({productData})
-      res.json({addData});
+  // .post(async(req,res)=>{
+  //   try{
+  //     const addData = await Product.add({productData})
+  //     res.json({addData});
 
-      console.log("in try block",addData)
-      res.send("in try block of products")
-    }
-    catch(error){
-      res.status(500).json(error)
-    }
-  })
+  //     console.log("in try block",addData)
+  //     res.send("in try block of products")
+  //   }
+  //   catch(error){
+  //     res.status(500).json(error)
+  //   }
+  // })
 
 module.exports = productRoute
