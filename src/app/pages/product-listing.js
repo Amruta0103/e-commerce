@@ -1,10 +1,24 @@
-import { data } from "./fakedata";
+// import { data } from "./fakedata";
 import ProductDetail from "../components/product-card";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import "./pages.css";
+const axios = require('axios');
 
-console.log(data);
 export default function ProductList() {
+  let data;
+
+    (async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/products');
+        data = response.data;
+        console.log(response.data)
+      }
+      catch(error){
+        console.log("error here",error)
+      }
+    })();
+
+
   const [
     { showInventoryAll, showFastDeliveryOnly, sortBy },
     dispatch
