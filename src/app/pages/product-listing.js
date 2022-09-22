@@ -4,6 +4,7 @@ import { useReducer } from "react";
 import "./pages.css";
 const axios = require('axios');
 let data = [];
+let dataHai;
 export default function ProductList() {
     (async () => {
       try {
@@ -11,7 +12,8 @@ export default function ProductList() {
         if(data.length === 0){
           data.push(response.data);
         }else{
-          console.log(data[0].products);
+          dataHai = data[0].products;
+          console.log(dataHai);
         }    
       }
       catch(error){
@@ -83,6 +85,11 @@ export default function ProductList() {
   return (
     <div className="ProductList">
       <div>
+      <ul style={{height:"50vh"}}>
+        {dataHai[0].map((item) =>{
+              return <li key={item.id}>{item.id}</li>
+            })}
+          </ul>
         <div className="sort">
           <fieldset className="fields">
             <legend className="legend">Sort By</legend>
@@ -134,16 +141,6 @@ export default function ProductList() {
         <div className="prod-pg">
         <h1>Products</h1>
         <div className="all-products">
-          {data.map((item) => {
-            return <li key={item.id} item={item.title}/>
-            // return(
-            //   <div>
-            //     <ul>
-                  
-            //     </ul>
-            //   </div>
-            // )
-          })}
         </div>
         </div>
       </div>
