@@ -1,17 +1,18 @@
 // import { data } from "./fakedata";
 import ProductDetail from "../components/product-card";
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
 import "./pages.css";
 const axios = require('axios');
-
+let data = [];
 export default function ProductList() {
-  let data;
-
     (async () => {
       try {
         const response = await axios.get('http://localhost:8080/products');
-        data = response.data;
-        console.log(response.data)
+        if(data.length === 0){
+          data.push(response.data);
+        }else{
+          console.log(data[0].products);
+        }    
       }
       catch(error){
         console.log("error here",error)
@@ -20,21 +21,22 @@ export default function ProductList() {
 
 
   const [
-    { showInventoryAll, showFastDeliveryOnly, sortBy },
+    // showInventoryAll, showFastDeliveryOnly,
+    { sortBy },
     dispatch
   ] = useReducer(
     function reducer(state, action) {
       switch (action.type) {
-        case "TOGGLE_INVENTORY":
-          return (state = {
-            ...state,
-            showInventoryAll: !state.showInventoryAll
-          });
-        case "TOGGLE_DELIVERY":
-          return (state = {
-            ...state,
-            showFastDeliveryOnly: !state.showFastDeliveryOnly
-          });
+        // case "TOGGLE_INVENTORY":
+        //   return (state = {
+        //     ...state,
+        //     showInventoryAll: !state.showInventoryAll
+        //   });
+        // case "TOGGLE_DELIVERY":
+        //   return (state = {
+        //     ...state,
+        //     showFastDeliveryOnly: !state.showFastDeliveryOnly
+        //   });
         case "SORT":
           return {
             ...state,
@@ -50,34 +52,34 @@ export default function ProductList() {
       sortBy: null
     }
   );
-  function getSortedData(productList, sortBy) {
+  function getSortedData(data, sortBy) {
     if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
-      return productList.sort((a, b) => b["price"] - a["price"]);
+      return data.sort((a, b) => b["price"] - a["price"]);
     }
 
     if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {
-      return productList.sort((a, b) => a["price"] - b["price"]);
+      return data.sort((a, b) => a["price"] - b["price"]);
     }
-    
-    return productList;
+    console.log("sorted one here", data);
+    return data;
   }
 
-  function getFilteredData(
-    productList,
-    { showFastDeliveryOnly, showInventoryAll }
-  ) {
-    return productList
-      .filter(({ fastDelivery }) =>
-        showFastDeliveryOnly ? fastDelivery : true
-      )
-      .filter(({ inStock }) => (showInventoryAll ? data : inStock));
-  }
+  // function getFilteredData(
+  //   data,
+  //   { showFastDeliveryOnly, showInventoryAll }
+  // ) {
+  //   return data
+  //     .filter(({ fastDelivery }) =>
+  //       showFastDeliveryOnly ? fastDelivery : true
+  //     )
+  //     .filter(({ inStock }) => (showInventoryAll ? data : inStock));
+  // }
 
   const sortedData = getSortedData(data, sortBy);
-  const filteredData = getFilteredData(sortedData, {
-    showFastDeliveryOnly,
-    showInventoryAll
-  });
+  // const filteredData = getFilteredData(sortedData, {
+  //   showFastDeliveryOnly,
+  //   showInventoryAll
+  // });
   return (
     <div className="ProductList">
       <div>
@@ -107,7 +109,7 @@ export default function ProductList() {
               Price - Low to High
             </label>
           </fieldset>
-          <fieldset className="fields">
+          {/* <fieldset className="fields">
             <legend className="legend"> Filters </legend>
             <label className="labels">
               <input
@@ -127,13 +129,20 @@ export default function ProductList() {
               />
               Fast Delivery Only
             </label>
-          </fieldset> 
+          </fieldset>  */}
         </div>
         <div className="prod-pg">
         <h1>Products</h1>
         <div className="all-products">
-          {filteredData.map((item) => {
-            return <ProductDetail key={item.id} item={item} />;
+          {data.map((item) => {
+            return <li key={item.id} item={item.title}/>
+            // return(
+            //   <div>
+            //     <ul>
+                  
+            //     </ul>
+            //   </div>
+            // )
           })}
         </div>
         </div>

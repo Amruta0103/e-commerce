@@ -36,8 +36,8 @@ export default function ProductDetail({ item }) {
         </div>
       </div>
       <div className="prod-info">
-        <h4 style={{margin: "0 0.1rem"}}>{`${item.brand}`}</h4>
-        <p className="prod-det">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum</p>
+        <h4 style={{margin: "0 0.1rem"}}>{`${item.title}`}</h4>
+        <p className="prod-det">{`${item.description}`}</p>
         <div style={{display: "flex"}}>
           <div style={{margin:"0 0.3rem 0 0"}}>
             <h4 style={{margin: "0rem"}}>₹{((item.price)-(item.price*(item.offer)/100).toFixed(0))}</h4>
@@ -46,7 +46,7 @@ export default function ProductDetail({ item }) {
             <h4 style={{margin: "0rem"}}><s>₹{`${item.price}`}</s></h4>
           </div>
           <div style={{margin:"0 0.3rem",color:"hsl(178, 78%, 20%)"}}>
-            <h5 style={{margin: "auto"}}><sub>({`${item.offer}`}% off)</sub></h5>
+            {/* <h5 style={{margin: "auto"}}><sub>({`${item.offer}`}% off)</sub></h5> */}
           </div>
         </div>
       </div>
