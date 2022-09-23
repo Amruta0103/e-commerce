@@ -139,7 +139,7 @@ export default function ProductList() {
         <h1>Products</h1>
         <div className="all-products">
         <div style={{height:"50vh"}}>
-        {console.log("hehehe",data.length)}
+          this<br/>{sortedData.map((item)=> item.products)}
         </div>
         </div>
         </div>
