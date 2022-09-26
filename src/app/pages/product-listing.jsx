@@ -3,44 +3,38 @@ import ProductDetail from "../components/product-card";
 import { useReducer } from "react";
 import "./pages.css";
 const axios = require('axios');
+
 let data =[];
-let dataHai = [];
 
 export default function ProductList() {
     (async () => {
       try {
         const response = await axios.get('http://localhost:8080/products');
-        if(dataHai.length === 0){
-          dataHai.push(response.data.products);
-        }else{
-          console.log("dataHai Initial:-", dataHai[0]);
-          data.push(dataHai[0]);
-          console.log("data list ye hai:-", data[0]);
-        }    
+        data = response.data.products;
+        console.log("line 13", data)
+        return data;
       }
       catch(error){
         console.log("error here",error)
       }
     })();
 
-
   const [
-    // showInventoryAll, showFastDeliveryOnly,
-    { sortBy },
+    {showInventoryAll, showFastDeliveryOnly, sortBy },
     dispatch
   ] = useReducer(
     function reducer(state, action) {
       switch (action.type) {
-        // case "TOGGLE_INVENTORY":
-        //   return (state = {
-        //     ...state,
-        //     showInventoryAll: !state.showInventoryAll
-        //   });
-        // case "TOGGLE_DELIVERY":
-        //   return (state = {
-        //     ...state,
-        //     showFastDeliveryOnly: !state.showFastDeliveryOnly
-        //   });
+        case "TOGGLE_INVENTORY":
+          return (state = {
+            ...state,
+            showInventoryAll: !state.showInventoryAll
+          });
+        case "TOGGLE_DELIVERY":
+          return (state = {
+            ...state,
+            showFastDeliveryOnly: !state.showFastDeliveryOnly
+          });
         case "SORT":
           return {
             ...state,
@@ -56,20 +50,20 @@ export default function ProductList() {
       sortBy: null
     }
   );
-  function getSortedData(data, sortBy) {
-    if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
-      return data.sort((a, b) => b["price"] - a["price"]);
-    }
+  
+  // function getSortedData(data, sortBy) {
+  //   if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
+  //     return data.sort((a, b) => b["price"] - a["price"]);
+  //   }
 
-    if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {
-      return data.sort((a, b) => a["price"] - b["price"]);
-    }
-    console.log("sorted one here", data);
-    return data;
-  }
+  //   if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {
+  //     return data.sort((a, b) => a["price"] - b["price"]);
+  //   }
 
-  // function getFilteredData(
-  //   data,
+  //   return data;
+  // }
+
+  // function getFilteredData( data,
   //   { showFastDeliveryOnly, showInventoryAll }
   // ) {
   //   return data
@@ -79,7 +73,7 @@ export default function ProductList() {
   //     .filter(({ inStock }) => (showInventoryAll ? data : inStock));
   // }
 
-  const sortedData = getSortedData(data, sortBy);
+  const sortedData = data
   // const filteredData = getFilteredData(sortedData, {
   //   showFastDeliveryOnly,
   //   showInventoryAll
@@ -113,7 +107,7 @@ export default function ProductList() {
               Price - Low to High
             </label>
           </fieldset>
-          {/* <fieldset className="fields">
+          <fieldset className="fields">
             <legend className="legend"> Filters </legend>
             <label className="labels">
               <input
@@ -133,14 +127,12 @@ export default function ProductList() {
               />
               Fast Delivery Only
             </label>
-          </fieldset>  */}
+          </fieldset> 
         </div>
         <div className="prod-pg">
         <h1>Products</h1>
         <div className="all-products">
-        <div style={{height:"50vh"}}>
-          this<br/>{sortedData.map((item)=> item.products)}
-        </div>
+          {console.log(data)}
         </div>
         </div>
       </div>
