@@ -1,83 +1,86 @@
 // import { data } from "./fakedata";
 import ProductDetail from "../components/product-card";
-import { useReducer } from "react";
+import { useReducer, useState} from "react";
 import "./pages.css";
 const axios = require('axios');
 
 let data =[];
 
 export default function ProductList() {
+  const [finalData, setFinalData] = useState([]);
     (async () => {
       try {
         const response = await axios.get('http://localhost:8080/products');
-        data = response.data.products;
-        console.log("line 13", data)
-        return data;
+        if(data.length === 0){
+          data.push(response.data.products);
+          return data;
+        }
+        setFinalData(data[0]);
       }
       catch(error){
         console.log("error here",error)
       }
     })();
 
-  const [
-    {showInventoryAll, showFastDeliveryOnly, sortBy },
-    dispatch
-  ] = useReducer(
-    function reducer(state, action) {
-      switch (action.type) {
-        case "TOGGLE_INVENTORY":
-          return (state = {
-            ...state,
-            showInventoryAll: !state.showInventoryAll
-          });
-        case "TOGGLE_DELIVERY":
-          return (state = {
-            ...state,
-            showFastDeliveryOnly: !state.showFastDeliveryOnly
-          });
-        case "SORT":
-          return {
-            ...state,
-            sortBy: action.payload
-          };
-        default:
-          return state;
+    const [ 
+      {showInventoryAll, showFastDeliveryOnly, sortBy },
+      dispatch
+    ] = useReducer(
+      function reducer(state, action) {
+        switch (action.type) {
+          case "TOGGLE_INVENTORY":
+            return (state = {
+              ...state,
+              showInventoryAll: !state.showInventoryAll
+            });
+          case "TOGGLE_DELIVERY":
+            return (state = {
+              ...state,
+              showFastDeliveryOnly: !state.showFastDeliveryOnly
+            });
+          case "SORT":
+            return {
+              ...state,
+              sortBy: action.payload
+            };
+          default:
+            return state;
+        }
+      },
+      {
+        showInventoryAll: true,
+        showFastDeliveryOnly: false,
+        sortBy: null
       }
-    },
-    {
-      showInventoryAll: true,
-      showFastDeliveryOnly: false,
-      sortBy: null
-    }
-  );
+    );
   
-  // function getSortedData(data, sortBy) {
-  //   if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
-  //     return data.sort((a, b) => b["price"] - a["price"]);
-  //   }
+  function getSortedData(data, sortBy) {
+    if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
+      return data.sort((a, b) => b["price"] - a["price"]);
+    }
 
-  //   if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {
-  //     return data.sort((a, b) => a["price"] - b["price"]);
-  //   }
+    if (sortBy && sortBy === "PRICE_LOW_TO_HIGH") {
+      return data.sort((a, b) => a["price"] - b["price"]);
+    }
 
-  //   return data;
-  // }
+    return finalData;
+  }
 
-  // function getFilteredData( data,
-  //   { showFastDeliveryOnly, showInventoryAll }
-  // ) {
-  //   return data
-  //     .filter(({ fastDelivery }) =>
-  //       showFastDeliveryOnly ? fastDelivery : true
-  //     )
-  //     .filter(({ inStock }) => (showInventoryAll ? data : inStock));
-  // }
+  function getFilteredData( data,
+    { showFastDeliveryOnly, showInventoryAll }
+  ) {
+    return data
+      .filter(({ fastDelivery }) =>
+        showFastDeliveryOnly ? fastDelivery : true
+      )
+      .filter(({ inStock }) => (showInventoryAll ? data : inStock));
+  }
 
-  const sortedData = data
-  // const filteredData = getFilteredData(sortedData, {
-  //   showFastDeliveryOnly,
-  //   showInventoryAll
-  // });
+  const sortedData = getSortedData(finalData, sortBy)
+  const filteredData = getFilteredData(sortedData, {
+    showFastDeliveryOnly,
+    showInventoryAll
+  });
   return (
     <div className="ProductList">
       <div>
@@ -132,7 +135,9 @@ export default function ProductList() {
         <div className="prod-pg">
         <h1>Products</h1>
         <div className="all-products">
-          {console.log(data)}
+          {filteredData.map((item)=>{
+            return <ProductDetail key={item.id} item={item} />
+          })}
         </div>
         </div>
       </div>

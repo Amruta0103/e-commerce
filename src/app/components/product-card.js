@@ -11,11 +11,10 @@ export default function ProductDetail({ item }) {
           <img
             alt="temporary pics"
             style={{
-              height: "200px",
-              width: "200px",
+              height: "150px",
+              width: "150px",
               padding: "0rem",
-              margin: "0rem",
-              borderRadius: "1rem 1rem 0 0"
+              margin: "auto",
             }}
             src={item.image}
           />
@@ -36,32 +35,34 @@ export default function ProductDetail({ item }) {
         </div>
       </div>
       <div className="prod-info">
-        <h4 style={{margin: "0 0.1rem"}}>{`${item.title}`}</h4>
-        <p className="prod-det">{`${item.description}`}</p>
+        <h4 className="prod-title">{`${item.title}`}</h4>
+        <h5 className="prod-det">{`${item.description}`}</h5>
         <div style={{display: "flex"}}>
-          <div style={{margin:"0 0.3rem 0 0"}}>
-            <h4 style={{margin: "0rem"}}>₹{((item.price)-(item.price*(item.offer)/100).toFixed(0))}</h4>
+        <div style={{margin:"0 0.3rem"}}>
+            <h3 style={{margin: "0rem"}}>₹{`${item.price}`}</h3>
           </div>
-          <div style={{margin:"0 0.3rem", color:"#575757"}}>
-            <h4 style={{margin: "0rem"}}><s>₹{`${item.price}`}</s></h4>
-          </div>
+          {/* <div style={{margin:"0 0.3rem 0 0"}}>
+            <h5 style={{margin: "0rem"}}>₹{((item.price)-(item.price*(item.offer)/100).toFixed(0))}</h5>
+          </div> */}
+          
           <div style={{margin:"0 0.3rem",color:"hsl(178, 78%, 20%)"}}>
             {/* <h5 style={{margin: "auto"}}><sub>({`${item.offer}`}% off)</sub></h5> */}
           </div>
         </div>
+        <Link to={cartItem.find((items) => items.id === item.id) ? "/cart" :"/products"}>
+          <button
+            className = {
+              cartItem.find((items) => items.id === item.id) ?
+              "card-button card-button-sel" :
+              "card-button"
+            }
+            onClick={cartItem.find((items) => items.id === item.id) ? ()=> !setCartItem : () => setCartItem((items) => [...items, item])}
+            >
+            {cartItem.find((items) => items.id === item.id) ? "Go to Cart" : "Add to Cart"}
+          </button>
+        </Link>
       </div>
-      <Link style={{width: "100%"}} to={cartItem.find((items) => items.id === item.id) ? "/cart" :"/products"}>
-        <button
-          className = {
-            cartItem.find((items) => items.id === item.id) ?
-            "card-button card-button-sel" :
-            "card-button"
-          }
-          onClick={cartItem.find((items) => items.id === item.id) ? ()=> !setCartItem : () => setCartItem((items) => [...items, item])}
-          >
-          {cartItem.find((items) => items.id === item.id) ? "Go to Cart" : "Add to Cart"}
-        </button>
-      </Link>
+      
     </div>
   );
 }
