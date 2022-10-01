@@ -7,6 +7,7 @@ const connectDB = require("./src/server/db.connect.js");
 
 
 const productRoute = require("./src/server/routes/get.data.route");
+const userRoute = require("./src/server/routes/user.route");
 
 connectDB();
 
@@ -14,7 +15,8 @@ app.use(cors())
 
 app.use(express.json())
 
-app.use("/products",productRoute)
+app.use("/products",productRoute);
+app.use("/user",userRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome");

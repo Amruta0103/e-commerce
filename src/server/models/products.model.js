@@ -18,6 +18,12 @@ const ProductSchema = new mongoose.Schema(
         description:{
             type:String
         },
+        inStock:{
+            type: Boolean,
+        },
+        fastDelivery:{
+            type: Boolean
+        }
     }
     // {
     //     _id: {
@@ -49,8 +55,7 @@ const ProductSchema = new mongoose.Schema(
     //         required: [false, "Need a description"],
     //         min: [100, "minimum 100 chars needed..."],
     //     },
-    //     inStock: {
-    //         type: String,
+    //     
     //         required: [true, "Need stock status"],
     //         min: [100, "minimum 100 chars needed..."],
     //     },

@@ -49,6 +49,8 @@ export default function ProductDetail({ item }) {
             {/* <h5 style={{margin: "auto"}}><sub>({`${item.offer}`}% off)</sub></h5> */}
           </div>
         </div>
+      </div>
+      <div className="cartbtn">
         <Link to={cartItem.find((items) => items.id === item.id) ? "/cart" :"/products"}>
           <button
             className = {
