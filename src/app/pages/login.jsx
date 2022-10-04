@@ -1,6 +1,8 @@
 import "./pages.css";
 import React, { useState } from "react";
 import { useAuth } from "../components/authProvider";
+import SignUp from "./signup";
+import { Link } from 'react-router-dom';
 // import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -16,15 +18,20 @@ export default function Login() {
   return (
     <div className="Login">
       <div className="loginBox">
-        <h1> Chhabhi laaya kya? </h1>
-        <legend>NAME</legend>
-        <input onChange={(user)=> setUser(user.target.value)} type="text" placeholder="Enter your name user"></input>
+        {/* <h1> Chhabhi laaya kya? </h1> */}
+        <legend>Email</legend>
+        <input onChange={(user)=> setUser(user.target.value)} type="text" placeholder="Enter your name email"></input>
         <legend>PASSWORD</legend>
         <input onChange={(pass)=> setPass(pass.target.value)} placeholder="Pass..."></input>
         <br /><br />
         <button className="login-btn" onClick={loginHandler}>Log In</button>
         <br />
-        <button onClick={()=> setLogin(false)}>log out</button>
+        {/* <button onClick={()=> setLogin(false)}>log out</button> */}
+      </div>
+      <div>
+        <h4>New here, Sign Up&nbsp;
+          <Link to="/signup">here</Link>
+        </h4>
       </div>
     </div>
   );
