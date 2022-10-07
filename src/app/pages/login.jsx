@@ -1,12 +1,12 @@
 import "./pages.css";
 import React, { useState } from "react";
 import { useAuth } from "../components/authProvider";
-import SignUp from "./signup";
+// import SignUp from "./signup";
 import { Link } from 'react-router-dom';
 // import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { loginCreds, setLogin } = useAuth();
+  const { loginCreds } = useAuth();
   // const { state } = useLocation();
   // const navigate = useNavigate();
   const [ user, setUser ] = useState("");

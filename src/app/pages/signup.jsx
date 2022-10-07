@@ -1,9 +1,13 @@
 import "./pages.css";
-import React, { useState } from "react";
-import { useAuth } from "../components/authProvider";
+import React from "react";
+import { useSignUp } from "../context/signupContext";
 
 
 export default function SignUp() {
+  const {setEmail,email} = useSignUp()
+  const onChangeHandler = event => {
+    setEmail(event.target.value);
+ };
   return(
     <div className="SignUp">
       <h1>Heya! Fill in details below and be our valued member</h1>
@@ -13,13 +17,14 @@ export default function SignUp() {
         <legend>Last Name</legend>
         <input type="text" placeholder="..."></input>
         <legend>Email</legend>
-        <input type="text" placeholder="..."></input>
+        <input  type={email} placeholder="..." ></input>
+        <p>{email}</p>
         <legend>Mobile No.</legend>
         <input type="text" placeholder="..."></input>
         <legend>Address</legend>
         <textarea placeholder="..." cols={30} rows={6}></textarea>
         <br/>
-        <button>Sign up</button>
+        <button onClick={onChangeHandler}>Sign up</button>
       </div>
     </div>
   )

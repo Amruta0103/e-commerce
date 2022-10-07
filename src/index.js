@@ -5,14 +5,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from './App.jsx';
 import { CartProvider } from "../src/app/components/cart-context";
 import { AuthProvider } from "../src/app/components/authProvider";
-
+import { SignUpProvider } from "../src/app/context/signupContext"
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
         <CartProvider>
-          <App />
+          <SignUpProvider>
+            <App />
+          </SignUpProvider>
         </CartProvider>
       </AuthProvider>
     </Router>

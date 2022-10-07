@@ -1,19 +1,22 @@
 import { createContext, useContext, useState } from "react";
 
-export const UserContext = createContext();
+export const SignUpContext = createContext();
 
-export function CartProvider({ children }) {
-  const [firstName, setFirstName] = useState([]);
-  const [lastName, setLatName] = useState([]);
+export function SignUpProvider({ children }) {
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLatName] = useState();
+  const [email, setEmail ] = useState();
+  const [mobile, setMobile ] = useState();
+  const [address, setAddress ] = useState();
   return (
-    <UserContext.Provider
-      value={{ firstName,setFirstName,lastName,setLatName }}
+    <SignUpContext.Provider
+      value={{ firstName,setFirstName,lastName,setLatName, email, setEmail, mobile, setMobile, address, setAddress }}
     >
       {children}
-    </UserContext.Provider>
+    </SignUpContext.Provider>
   );
 }
 
-export function useCart() {
-  return useContext(UserContext);
+export function useSignUp() {
+  return useContext(SignUpContext);
 }
