@@ -4,27 +4,24 @@ import { useSignUp } from "../context/signupContext";
 
 
 export default function SignUp() {
-  const {setEmail,email} = useSignUp()
-  const onChangeHandler = event => {
-    setEmail(event.target.value);
- };
+  const {setFirstName,setLastName, email, setEmail,setMobile,setAddress} = useSignUp()
   return(
     <div className="SignUp">
       <h1>Heya! Fill in details below and be our valued member</h1>
       <div className="signupForm">
         <legend>First Name</legend>
-        <input type="text" placeholder="..."></input>
+        <input onChangeCapture={(e)=> setFirstName(e.target.value)} type="text" placeholder="..."></input>
         <legend>Last Name</legend>
-        <input type="text" placeholder="..."></input>
+        <input onChangeCapture={(e)=> setLastName(e.target.value)} type="text" placeholder="..."></input>
         <legend>Email</legend>
-        <input  type={email} placeholder="..." ></input>
+        <input onChangeCapture={(e)=> setEmail(e.target.value)} placeholder="..." ></input>
         <p>{email}</p>
         <legend>Mobile No.</legend>
-        <input type="text" placeholder="..."></input>
+        <input onChangeCapture={(e)=> setMobile(e.target.value)} type="text" placeholder="..."></input>
         <legend>Address</legend>
-        <textarea placeholder="..." cols={30} rows={6}></textarea>
+        <textarea onChangeCapture={(e)=> setAddress(e.target.value)} placeholder="..." cols={30} rows={6}></textarea>
         <br/>
-        <button onClick={onChangeHandler}>Sign up</button>
+        <button onClick={()=>console.log("haha")}>Sign up</button>
       </div>
     </div>
   )
