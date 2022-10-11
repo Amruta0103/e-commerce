@@ -19,8 +19,12 @@ const UserSchema = new mongoose.Schema(
       type:String,
       required:true,
     },
-    mobileNo:{
+    mobile:{
       type:Number,
+      required: true,
+    },
+    passWord:{
+      type: String,
       required: true,
     },
     prevOrders:{
