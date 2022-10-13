@@ -1,12 +1,12 @@
 const express = require('express');
 const userLoginRoute = express.Router();
-const User = require('../models/users.model');
+const {User} = require('../models/users.model');
 
 userLoginRoute.route("/")
   .get(async(req,res) => {
     try{
       const {email, passWord} = req.body;
-      const findUser = await User.User.find({"email":email});
+      const findUser = await User.find({"email":email});
       if(findUser){
         if(findUser[0].passWord === passWord){
           return res.status(200).json({message:"successful login"})
