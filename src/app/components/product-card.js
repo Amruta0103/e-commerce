@@ -22,10 +22,10 @@ export default function ProductDetail({ item }) {
         <div className="wishlist-div">
           <button
             className=
-            { wishItem.find((items)=> items.id===item.id) ?"wishlist-btn wishlist-btn-sel" : "wishlist-btn wishlist-btn-unsel"
+            { wishItem.find((items)=> items.id === item.id) ?"wishlist-btn wishlist-btn-sel" : "wishlist-btn wishlist-btn-unsel"
             }
             onClick={ 
-              (wishItem.find((items)=> items.id===item.id)) ? 
+              (wishItem.find((items)=> items.id=== item.id)) ? 
               (()=>setWishItem((prev)=> prev.filter((items) => item !== items))) : 
               (()=>setWishItem((items)=> [...items, item]))
             }
@@ -54,11 +54,10 @@ export default function ProductDetail({ item }) {
         <Link to={cartItem.find((items) => items.id === item.id) ? "/cart" :"/products"}>
           <button
             className = {
-              cartItem.find((items) => items.id === item.id) ?
-              "card-button card-button-sel" :
-              "card-button"
+              cartItem.find((items) => items.id === item.id) ? "card-button card-button-sel" : "card-button"
             }
             onClick={cartItem.find((items) => items.id === item.id) ? ()=> !setCartItem : () => setCartItem((items) => [...items, item])}
+            onClickCapture={()=> console.log(cartItem)}
             >
             {cartItem.find((items) => items.id === item.id) ? "Go to Cart" : "Add to Cart"}
           </button>

@@ -1,7 +1,7 @@
 import "./pages.css";
-import React, { useState } from "react";
+import React from "react";
 import { useUser } from "../context/userContext";
-import { useAuth } from "../context/authContext";
+// import { useAuth } from "../context/authContext";
 import { Link } from 'react-router-dom';
 
 

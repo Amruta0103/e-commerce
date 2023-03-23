@@ -136,7 +136,8 @@ export default function ProductList() {
         <h1>Products</h1>
         <div className="all-products">
           {filteredData.map((item)=>{
-            return <ProductDetail key={item.id} item={item} />
+            // console.log("these are items:-\n",item._id)
+            return <ProductDetail key={item._id} item={item} />
           })}
         </div>
         </div>
