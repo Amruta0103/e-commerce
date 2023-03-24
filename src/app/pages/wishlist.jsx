@@ -21,18 +21,17 @@ export default function Wishlist() {
       :
       <div className="all-products">  
         {wishItem.map((item) => (
-          <div key={item._id} className="ProductCardWish">
+          <div key={item._id} className="ProductCard">
             <div className="img-wish">
               <div className="prod-img">
                 <img
                   alt="temporary pics"
                   src={item.image}
                   style={{
-                    height: "200px",
-                    width: "200px",
+                    height: "150px",
+                    width: "150px",
                     padding: "0rem",
-                    margin: "0rem",
-                    borderRadius: "1rem 1rem 0 0"
+                    margin: "auto",
                   }}
                 />
               </div>
@@ -54,18 +53,18 @@ export default function Wishlist() {
               </div>
             </div>
             <div className="prod-info">
-              <h4 style={{margin: "0rem"}}>{`${item.brand}`}</h4>
-              <p className="prod-det">Lorem ipsum dolor sit amet</p>
+              <h4 className="prod-title">{`${item.title}`}</h4>
+              <p className="prod-det">{`${item.description}`}</p>
               <div style={{display: "flex"}}>
-                <div style={{margin:"0 0.2rem"}}>
-                  <h4 style={{margin: "0rem"}}>₹{((item.price)-(item.price*(item.offer)/100).toFixed(0))}</h4>
+                {/* <div style={{margin:"0 0.3rem"}}> */}
+                  {/* <h4 style={{margin: "0rem"}}>₹{((item.price)-(item.price*(item.offer)/100).toFixed(0))}</h4> */}
+                {/* </div> */}
+                <div style={{margin:"0 0.3rem"}}>
+                  <h4 style={{margin: "0rem"}}>₹{`${item.price}`}</h4>
                 </div>
-                <div style={{margin:"0 0.2rem", color:"#575757"}}>
-                  <h4 style={{margin: "0rem"}}><s>₹{`${item.price}`}</s></h4>
-                </div>
-                <div style={{margin:"0 0.2rem",color:"hsl(178, 78%, 20%)"}}>
-                  <h5 style={{margin: "auto"}}><sub>₹({`${item.offer}`}% off)</sub></h5>
-                </div>
+                {/* <div style={{margin:"0 0.2rem",color:"hsl(178, 78%, 20%)"}}> */}
+                  {/* <h5 style={{margin: "auto"}}><sub>₹({`${item.offer}`}% off)</sub></h5> */}
+                {/* </div> */}
               </div>
             </div>
             <Link style={{width: "100%"}} to={cartItem.find((items) => items.id === item.id) ? "/cart" : "/wishlist"}>

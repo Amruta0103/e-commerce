@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import "../components/product-card.css";
 import "../pages/pages.css";
 
-export default function Cart({ item }) {
+export default function Cart() {
   const { cartItem, setCartItem, wishItem, setWishItem } = useCart();
+  console.log("In the CART:- \n", cartItem.map((items) => items));
   function reducer(sum,cartItem){
-    return sum+cartItem.price*cartItem.quantity;
+    return sum+cartItem.price* cartItem.quantity;
   }
   return (
     <div className="Cart">
@@ -29,18 +30,17 @@ export default function Cart({ item }) {
         </div>
         <div className="all-products">
           {cartItem.map((item) => (
-            <div key={item._id} className="ProductCardCart">
+            <div key={item._id} className="ProductCard">
               <div className="img-wish">
                 <div className="prod-img">
                   <img
                     alt="temporary pics"
                     src={item.image}
                     style={{
-                      height: "200px",
-                      width: "200px",
+                      height: "150px",
+                      width: "150px",
                       padding: "0rem",
-                      margin: "0rem",
-                      borderRadius: "1rem 1rem 0 0"
+                      margin: "auto",
                     }}
                   />
                 </div>
@@ -48,39 +48,39 @@ export default function Cart({ item }) {
                   <button
                     className=
                     { 
-                      wishItem.find((items)=> items.id===item.id) ?
+                      wishItem.find((items)=> items._id===item._id) ?
                       "wishlist-btn wishlist-btn-sel" : "wishlist-btn wishlist-btn-unsel"
                     }
                     onClick={ 
-                      (wishItem.find((items)=> items.id===item.id)) ? 
+                      (wishItem.find((items)=> items._id===item._id)) ? 
                       (()=>setWishItem((prev)=> prev.filter((items) => item !== items))) : 
                       (()=>setWishItem((items)=> [...items, item]))
                     }
                   >
-                    <img src={ wishItem.find((items)=> items.id===item.id) ?"./icons/wishlist-icon-red.svg" :"./icons/wishlist-icon.svg" } alt="heart"></img>
+                    <img src={ wishItem.find((items)=> items._id===item._id) ?"./icons/wishlist-icon-red.svg" :"./icons/wishlist-icon.svg" } alt="heart"></img>
                   </button>
                 </div>                
               </div>
               <div className="prod-info">
-                <h4 style={{margin: "0rem"}}>{`${item.brand}`}</h4>
-                <p className="prod-det">Lorem ipsum dolor sit amet</p>
+                <h4 className="prod-title">{`${item.brand}`}</h4>
+                <p className="prod-det">{`${item.description}`}</p>
                 <div style={{display: "flex"}}>
-                  <div style={{margin:"0 0.2rem"}}>
-                    <h4 style={{margin: "0rem"}}>₹{((item.price)-(item.price*(item.offer)/100).toFixed(0))}</h4>
+                  {/* <div style={{margin:"0 0.2rem"}}> */}
+                    {/* <h4 style={{margin: "0rem"}}>₹{((item.price)-(item.price*(item.offer)/100).toFixed(0))}</h4> */}
+                  {/* </div> */}
+                  <div style={{margin:"0 0.3rem"}}>
+                    <h4 style={{margin: "0rem"}}>₹{`${item.price}`}</h4>
                   </div>
-                  <div style={{margin:"0 0.2rem", color:"#575757"}}>
-                    <h4 style={{margin: "0rem"}}><s>₹{`${item.price}`}</s></h4>
-                  </div>
-                  <div style={{margin:"0 0.2rem",color:"hsl(178, 78%, 20%)"}}>
-                    <h5 style={{margin: "auto"}}><sub>({`${item.offer}`}% off)</sub></h5>
-                  </div>
+                  {/* <div style={{margin:"0 0.2rem",color:"hsl(178, 78%, 20%)"}}> */}
+                    {/* <h5 style={{margin: "auto"}}><sub>({`${item.offer}`}% off)</sub></h5> */}
+                  {/* </div> */}
                 </div>
               </div>
               <div className="reducerFunc">
                 <button className="reducer-btns"
                   onClick={() => setCartItem((prevState) =>
                     prevState.map((items) =>
-                      items.id === item.id
+                      items._id === item._id
                         ? { ...items, quantity: item.quantity + 1 }
                         : items
                     )
@@ -88,17 +88,17 @@ export default function Cart({ item }) {
                 >
                   <img style={{height: "20px"}} src="./icons/plus-circle-solid.svg" alt="plus"></img>
                 </button>
-                <h5 style={{marginBlockStart: "0px", marginBlockEnd: "0", width: "1rem"}}>{`${item.quantity}`}</h5>
+                <h5 style={{marginBlockStart: "0px", marginBlockEnd: "0", width: "1rem"}}>{item.quantity}</h5>
                 <button
                   className= "reducer-btns"
                   onClick={() => setCartItem((prevState) =>
                     prevState.map((items) =>
-                      items.id === item.id
+                      items._id === item._id
                         ? { ...items, quantity: item.quantity - 1 }
                         : items
                     )
                   )}
-                  disabled = {item.quantity < 2 ? true : false}
+                  disabled = {item.quantity === 1 ? true : false}
                 >
                   <img style={{height: "20px"}} src="./icons/minus-circle-solid.svg" alt="trash/minus"></img>
                 </button>
