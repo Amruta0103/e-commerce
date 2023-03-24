@@ -6,7 +6,7 @@ const Navbar = () => {
   return(
     <nav className="navbar">
     <div className="brand">
-      <img class="brand-icon" src="./icons/origami.png" alt="brand-icon" />
+      <img className="brand-icon" src="./icons/origami.png" alt="brand-icon" />
       <h1>The Paper Shop</h1>
     </div>
     <div className="navmenus">

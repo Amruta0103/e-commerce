@@ -21,7 +21,7 @@ export default function Wishlist() {
       :
       <div className="all-products">  
         {wishItem.map((item) => (
-          <div key={item.id} className="ProductCardWish">
+          <div key={item._id} className="ProductCardWish">
             <div className="img-wish">
               <div className="prod-img">
                 <img

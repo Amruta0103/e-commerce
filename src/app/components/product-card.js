@@ -56,8 +56,7 @@ export default function ProductDetail({ item }) {
             className = {
               cartItem.find((items) => items.id === item.id) ? "card-button card-button-sel" : "card-button"
             }
-            onClick={cartItem.find((items) => items.id === item.id) ? ()=> !setCartItem : () => setCartItem((items) => [...items, item])}
-            onClickCapture={()=> console.log(cartItem)}
+            onClick={cartItem.find((items) => items.id === item.id) ? (()=> !setCartItem) : (() => setCartItem((items) => [...items, item]))}
             >
             {cartItem.find((items) => items.id === item.id) ? "Go to Cart" : "Add to Cart"}
           </button>

@@ -29,7 +29,7 @@ export default function Cart({ item }) {
         </div>
         <div className="all-products">
           {cartItem.map((item) => (
-            <div key={item.id} className="ProductCardCart">
+            <div key={item._id} className="ProductCardCart">
               <div className="img-wish">
                 <div className="prod-img">
                   <img
