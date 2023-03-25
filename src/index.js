@@ -4,7 +4,7 @@ import './index.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import App from './App.jsx';
 import { CartProvider } from "../src/app/components/cart-context";
-import { AuthProvider } from "../src/app/components/authProvider";
+import { AuthProvider } from "../src/app/context/authContext";
 import { UserProvider } from "../src/app/context/userContext"
 
 ReactDOM.render(

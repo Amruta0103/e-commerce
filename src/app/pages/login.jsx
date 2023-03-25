@@ -3,22 +3,36 @@ import React from "react";
 import { useUser } from "../context/userContext";
 // import { useAuth } from "../context/authContext";
 import { Link } from 'react-router-dom';
+import { useAuth } from "../context/authContext";
 
 
 export default function Login() {
+  // eslint-disable-next-line 
   const { email, setEmail, passWord, setPassWord} = useUser();
-
+  const {isLoggedIn, setLoggedIn} = useAuth();
+  // console.log("isLoggedIn", isLoggedIn);
+  // console.log("temp",email, passWord, isLoggedIn);
   return (
     <div className="Login">
-      <div className="loginBox">
-        <legend>Email</legend>
-        <input onChangeCapture={(e)=> setEmail(e.target.value)} type="text" placeholder="Enter your name email"></input>
-        <legend>PASSWORD</legend>
-        <input onChangeCapture={(e)=>setPassWord(e.target.value)} type="password" placeholder="Pass..."></input>
-        <br /><br />
-        <button onClick={()=>console.log(email, passWord)} className="login-btn">Log In</button>
-        <br />
-      </div>
+      {isLoggedIn === true ? (
+        <div> You are logged in</div>
+      ):(
+        <div className="loginBox">
+          <legend>Email</legend>
+          <input onChangeCapture={(e)=> setEmail(e.target.value)} type="text" placeholder="Enter your name email"></input>
+          <legend>PASSWORD</legend>
+          <input onChangeCapture={(e)=>setPassWord(e.target.value)} type="password" placeholder="Pass..."></input>
+          <br /><br />
+          <Link to="/products" onClick={()=> console.log("isLoggedIn", isLoggedIn)}>
+            <button className="login-btn" onClick={() => !setLoggedIn}>
+              Log In
+            </button>
+            {/* {console.log("isloggedIN", isLoggedIn)} */}
+          </Link>
+          <br />
+        </div>
+      )
+      }
       <div>
         <h4>New here, Sign Up&nbsp;
           <Link to="/signup">here</Link>

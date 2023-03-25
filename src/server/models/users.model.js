@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const prevOrders = require('./prevOrders.model');
+// eslint-disable-next-line
+const prevOrders = require("./prevOrders.model");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -29,7 +30,7 @@ const UserSchema = new mongoose.Schema(
     },
     prevOrders:{
       type: mongoose.Schema.Types.Array,
-      ref: "prevOrders",
+      ref: prevOrders.PrevOrders,
       required: true,
     },
     // loggedIn:{

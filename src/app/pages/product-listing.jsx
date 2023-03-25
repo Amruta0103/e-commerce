@@ -10,7 +10,7 @@ export default function ProductList() {
   const [finalData, setFinalData] = useState([]);
     (async () => {
       try {
-        const response = await axios.get('http://localhost:8080/products');
+        const response = await axios.get("http://localhost:8080/products");
         if(data.length === 0){
           data.push(response.data.products);
           return data;
