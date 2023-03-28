@@ -17,9 +17,9 @@ export default function ProductDetail({ item }) {
           <img
             alt="temporary pics"
             style={{
-              height: "150px",
-              width: "150px",
-              padding: "0rem",
+              height: "140px",
+              width: "140px",
+              padding: "1rem",
               margin: "auto",
             }}
             src={item.image}

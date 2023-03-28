@@ -37,8 +37,8 @@ export default function Cart() {
                     alt="temporary pics"
                     src={item.image}
                     style={{
-                      height: "150px",
-                      width: "150px",
+                      height: "140px",
+                      width: "140px",
                       padding: "0rem",
                       margin: "auto",
                     }}
@@ -62,7 +62,7 @@ export default function Cart() {
                 </div>                
               </div>
               <div className="prod-info">
-                <h4 className="prod-title">{`${item.brand}`}</h4>
+                <h4 className="prod-title">{`${item.title}`}</h4>
                 <p className="prod-det">{`${item.description}`}</p>
                 <div style={{display: "flex"}}>
                   {/* <div style={{margin:"0 0.2rem"}}> */}

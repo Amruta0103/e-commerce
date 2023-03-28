@@ -1,10 +1,9 @@
 .ProductCard{
-  height: 270px;
-  width: 150px;
+  height: 300px;
+  width: 180px;
   color: var(--black);
   background-color: var(--white);
   margin: 1rem;
-  /* box-shadow: 1px 1px slategray; */
 }
 .prod-info{
   text-align: left;
@@ -31,7 +30,7 @@
   width: fit-content;
 }
 .card-button{
-  width: 150px;
+  width: 180px;
   padding: 0.3rem;
   margin: 0;
   font-family: "Nunito", sans-serif;
@@ -110,9 +109,10 @@
 }
 .wishlist-div{
   position: relative;
-  right: 2rem;
-  top: 0rem;
+  right: 1rem;
+  top: -1rem;
   z-index: 2;
+  height: fit-content;
 }
 .wishlist-btn{
   z-index: 2;
@@ -120,7 +120,8 @@
   width: 2rem;
   border: 1px solid transparent;
   border-radius: 1rem;
-  background-color: white;
+  margin: 0.5rem;
+  background-color: transparent;
 }
 .wishlist-btn:hover{
   cursor: pointer;
