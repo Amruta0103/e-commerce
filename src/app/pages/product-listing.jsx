@@ -50,12 +50,13 @@ export default function ProductList() {
       {
         showInventoryAll: true,
         showFastDeliveryOnly: false,
-        sortBy: null
+        sortBy: false
       }
     );
   
   function getSortedData(data, sortBy) {
     if (sortBy && sortBy === "PRICE_HIGH_TO_LOW") {
+      console.log("trail one", data.sort((a, b) => b["price"] - a["price"]));
       return data.sort((a, b) => b["price"] - a["price"]);
     }
 

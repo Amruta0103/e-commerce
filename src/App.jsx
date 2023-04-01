@@ -9,6 +9,7 @@ import ProductListing from "../src/app/pages/product-listing";
 import Login from "../src/app/pages/login";
 import Navbar from "../src/app/components/navbar";
 import SignUp from "./app/pages/signup";
+import Checkout from "./app/pages/checkout";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path ="/wishlist" element={<Wishlist/>} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/checkout" element={<Checkout />}/>
       </Routes>     
     </div>       
   );
