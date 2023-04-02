@@ -16,8 +16,8 @@ const Navbar = () => {
       <Link className="menu-link" to="/products"><button className="menu-btn"><img className="nav-icons" src="./icons/store-solid.svg" alt="Products"></img></button></Link>
       <Link className="menu-link" to="/cart"><button className="menu-btn"><img className="nav-icons" src="./icons/shopping-cart-solid.svg" alt="Cart"></img>{cartItem.length < 1 ? null : cartItem.length}</button></Link>
       <Link className="menu-link" to="/wishlist"><button className="menu-btn"><img className="nav-icons" src="./icons/bookmark-solid.svg" alt="Wishlist"></img>{wishItem.length < 1 ? null : wishItem.length}</button></Link>
-      <Link className="menu-link" to="/login"><button className="menu-btn"><img className="nav-icons" src="./icons/user-circle-solid.svg" alt="Login"></img></button></Link>
-      <Link className="menu-link" to="/checkout"><button className="menu-btn">CheckOut</button></Link>
+      {/* <Link className="menu-link" to="/login"><button className="menu-btn"><img className="nav-icons" src="./icons/user-circle-solid.svg" alt="Login"></img></button></Link> */}
+      {/* <Link className="menu-link" to="/checkout"><button className="menu-btn">CheckOut</button></Link> */}
     </div>
   </nav>
   );

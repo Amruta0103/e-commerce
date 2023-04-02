@@ -169,3 +169,16 @@
 .login-btn:active{
   transform:scale(0.90)
 }
+
+.checkOutTable{
+  /* border: 1px solid black; */
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.checkOutTr{
+  border: 1px solid;
+  margin: 0.5rem;
+  min-width: 5rem;
+  max-width: 20rem;
+}

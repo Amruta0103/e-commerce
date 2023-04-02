@@ -116,6 +116,7 @@ export default function Cart() {
             </div>
           ))}
         </div>
+        <Link style={{textDecoration: "none"}} to="/checkout"><h1 className="menu-btn">CheckOut →</h1></Link>
       </div>
       }
     </div>
