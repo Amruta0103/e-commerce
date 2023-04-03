@@ -7,6 +7,18 @@ const Checkout = () => {
   function reducer(sum,cartItem){
     return sum+cartItem.price* cartItem.quantity;
   }
+
+  const placeOrder = () => {
+    const intervalId = setTimeout( () => {
+      alert("Order is placed")
+    },1000)
+
+    return () => clearInterval(intervalId);
+  }
+  
+
+  
+
   return (
     <>
       <h2 style={{margin: "10rem auto auto"}}>Please Check Your Final order</h2>
@@ -31,7 +43,9 @@ const Checkout = () => {
       <h1>Total Price: ₹{cartItem.reduce(reducer,0)}</h1>
 
       <div>
-        <h1>Place Order</h1>
+        <button onClickCapture={placeOrder}>
+         <h1>Place Order</h1>
+        </button>
       </div>
     </>
   ) 
