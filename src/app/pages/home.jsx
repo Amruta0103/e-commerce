@@ -15,7 +15,6 @@ export default function Home(){
             </div>
           </button>
         </Link>
-        <h1 className="home-infos">Your One Stop Shop for Your Crafts and Stationery needs!</h1>
       </div>
     </div>
   );

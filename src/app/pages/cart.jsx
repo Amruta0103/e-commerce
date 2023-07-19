@@ -5,9 +5,10 @@ import "../pages/pages.css";
 
 export default function Cart() {
   const { cartItem, setCartItem, wishItem, setWishItem } = useCart();
-  console.log("In the CART:- \n", cartItem.map((items) => items));
+  // console.log("In the CART:- \n", cartItem.map((items) => items));
   function reducer(sum,cartItem){
-    return sum+cartItem.price* cartItem.quantity;
+    let value = sum+cartItem.price* cartItem.quantity;
+    return value;
   }
   return (
     <div className="Cart">
@@ -26,7 +27,7 @@ export default function Cart() {
       :
       <div>
         <div style={{alignContent:"left", margin: "0"}}>
-        <h1 className="totalPrice">Total Price: ₹{cartItem.reduce(reducer,0)}</h1>
+        <h1 className="totalPrice">Total Price: ₹{(cartItem.reduce(reducer,0)).toFixed(2)}</h1>
         </div>
         <div className="all-products">
           {cartItem.map((item) => (
@@ -76,6 +77,7 @@ export default function Cart() {
                   {/* </div> */}
                 </div>
               </div>
+              <div>
               <div className="reducerFunc">
                 <button className="reducer-btns"
                   onClick={() => setCartItem((prevState) =>
@@ -110,9 +112,10 @@ export default function Cart() {
                 }
               >
                 <div className="remove-cart-info">
-                <span>Remove Item</span><img style={{height: "15px",margin: "0 0.5rem"}} src="./icons/trash-bin.svg" alt="remove item"></img>
+                <img style={{height: "15px",margin: "0 0.5rem"}} src="./icons/trash-bin.svg" alt="remove item"></img>
                 </div>
               </button>
+              </div>
             </div>
           ))}
         </div>
